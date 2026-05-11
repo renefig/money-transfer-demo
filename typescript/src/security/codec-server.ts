@@ -79,8 +79,8 @@ async function main({ port = 8888 }: any) {
   });
 
   await new Promise<void>((resolve, reject) => {
-    app.listen(port, resolve);
-    app.on('error', reject);
+    const server = app.listen(port, resolve);
+    server.on('error', reject);
   });
 
   console.log(`Codec server listening on port ${port}`);
