@@ -1,6 +1,6 @@
-from __future__ import annotations
 import asyncio
-from typing import Sequence, Any
+from collections.abc import Sequence
+from typing import Any
 
 from datetime import timedelta
 
