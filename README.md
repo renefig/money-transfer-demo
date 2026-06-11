@@ -13,7 +13,7 @@ Scenarios currently implemented include
 
 ## Dependencies
 
-The language runtime versions can be easily installed using [asdf](https://asdf-vm.com/) **See [full setup instructions below](#asdf)**
+The language runtime versions can be easily installed using [asdf](https://asdf-vm.com/).  **See [full setup instructions below](#asdf)**
 ```bash
 asdf install
 ```
