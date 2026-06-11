@@ -12,7 +12,8 @@ Scenarios currently implemented include
 * Invalid Account           - How to exit a workflow for business purposes (fail the workflow)
 
 ## Dependencies
-If using asdf version manager, install all required tool versions based on .tool-versions files:
+
+The language runtime versions can be easily installed using [asdf](https://asdf-vm.com/) **See [full setup instructions below](#asdf)**
 ```bash
 asdf install
 ```
@@ -187,3 +188,70 @@ cd java
 ```
 
 To view the decrypted data in your browser, you can set the Codec Server to use [https://codec.tmprl-demo.cloud](https://codec.tmprl-demo.cloud). Be sure to enable the "Pass the user access token" slider. This will work as long as you do not change the encryption key. 
+
+# asdf
+
+The runtime versions for the prerequisites identified in this README can be managed
+using [asdf](https://asdf-vm.com/). The runtime versions are specified in the [.tool-versions](.tool-versions)
+file.
+
+To get all of the needed language runtime versions installed and working should be a quick 3 step process:
+1. Install `asdf` for your machine
+2. Install the runtime ***plugins*** needed
+3. Install the specific runtime ***versions*** needed for the projects for this repository
+
+## 1. Install & Configure
+
+Install and configure `asdf` per the [Getting Started Guide](https://asdf-vm.com/guide/getting-started.html#getting-started)
+
+## 2. Install Plugins
+
+Add [plugins](https://asdf-vm.com/manage/plugins.html) for the tools in [.tool-versions](.tool-versions)
+```sh
+asdf plugin add dotnet-core
+asdf plugin add golang
+asdf plugin add java
+asdf plugin add nodejs
+asdf plugin add pnpm
+asdf plugin add poetry
+asdf plugin add python
+asdf plugin add ruby
+```
+
+> [!NOTE]
+> Adding the Plugins does not actually install any runtimes or tools (i.e. a Go runtime) on your machine. You will install the
+> runtime versions in the next step
+
+## 3. Install Tool Versions
+
+Ensure you run the following `asdf install` command from within the same directory as this README.md file. This directory
+contains the `.tools-verions` file, which will tell `asdf` which specific versions to install and configure for your environment.
+
+```sh
+> cd temporal-money-transfer-demo
+> asdf install
+
+# Example Output
+# for any version that you don't yet have installed, you will see output of asdf downloading and installing, e.g.
+Platform 'darwin' supported!
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 72.8M  100 72.8M    0     0  2816k      0  0:00:26  0:00:26 --:--:-- 2847k
+verifying checksum
+/Users/psullivan/.asdf/downloads/golang/1.23.12/archive.tar.gz: OK
+checksum verified
+
+# for any version that you already have installed, you will see output similar to
+version 1.23.12 of golang is already installed
+```
+
+Once installed, then every time you `cd` into this directory, e.g. `cd temporal-money-transfer-demo` asdf will automatically use these
+versions for the tool runtimes invoked, i.e. invoking `go` will specifically use version `1.23.12` installed by asdf in the example
+output above, e.g.
+```
+> cd temporal-money-transfer-demo
+> go version
+go version go1.23.12 darwin/arm64
+```
+
+
