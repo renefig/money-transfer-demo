@@ -33,7 +33,7 @@ public class AccountTransferWorkflowScenarios implements DynamicWorkflow {
     private String transferState = "starting";
     private DepositResponse depositResponse = new DepositResponse("");
 
-    private int approvalTime = 30;
+    private int approvalTime = 120;
     private boolean approved = false;
 
     @Override
@@ -79,7 +79,7 @@ public class AccountTransferWorkflowScenarios implements DynamicWorkflow {
 
         if (BUG.equals(type)) {
             // Simulate bug
-            throw new RuntimeException("Simulated bug - fix me!");
+            //throw new RuntimeException("Simulated bug - fix me!");
         }
 
         // Deposit

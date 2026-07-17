@@ -59,6 +59,10 @@ public class AccountTransferActivitiesImpl implements AccountTransferActivities 
     public DepositResponse deposit(String idempotencyKey, float amount, String type) {
         log.info("Deposit activity started, amount = {}", amount);
         int attempt = Activity.getExecutionContext().getInfo().getAttempt();
+        
+        // SIMULATE A BUG
+       // if (true)
+       // throw new RuntimeException("BUGGG!!! HERE");
 
         // simulate external API call
         String error = simulateExternalOperation(1000, type, attempt);
